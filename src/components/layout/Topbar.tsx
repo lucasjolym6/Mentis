@@ -1,24 +1,16 @@
 // src/components/layout/Topbar.tsx
 "use client"
-import { useTheme } from 'next-themes'
-import { Moon, Sun } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Logo } from '@/components/common/Logo'
+import { ThemeToggle } from '@/components/common/ThemeToggle'
 
 export function Topbar() {
-  const { theme, setTheme } = useTheme()
-  const isDark = theme === 'dark'
   return (
-    <header className="h-14 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-4">
-      <div className="font-semibold tracking-tight">Mentis</div>
+    <header className="h-14 sticky top-0 border-b border-[#E5E7EB] flex items-center justify-between px-6 bg-[var(--color-surface)]/90 backdrop-blur">
+      <div className="flex items-center gap-3">
+        <Logo />
+      </div>
       <div className="flex items-center gap-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Toggle theme"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-        >
-          {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-        </Button>
+        <ThemeToggle />
       </div>
     </header>
   )

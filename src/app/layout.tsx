@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter, Space_Grotesk } from "next/font/google";
+import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Topbar } from "@/components/layout/Topbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
+  display: 'swap',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-});
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Mentis",
@@ -27,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased min-h-screen bg-[var(--bg)] text-[var(--fg)]`}>
         <ThemeProvider>
           <div className="grid grid-rows-[56px_1fr] grid-cols-[224px_1fr] min-h-screen">
             <div className="col-span-2 row-[1/2]">

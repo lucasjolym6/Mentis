@@ -1,0 +1,67 @@
+:root {
+  --brand: 217 100% 52%;
+  --brand-foreground: 0 0% 100%;
+
+  --bg: 210 40% 98%;
+  --surface: 0 0% 100%;
+  --surface-2: 210 40% 98%;
+  --surface-3: 210 30% 96%;
+
+  --muted: 215 16% 47%;
+  --muted-foreground: 222 9% 45%;
+
+  --border: 214 32% 91%;
+  --ring: var(--brand);
+  --shadow: 215 20% 18%;
+}
+
+.dark {
+  --bg: 223 33% 10%;
+  --surface: 223 36% 13%;
+  --surface-2: 223 30% 16%;
+  --surface-3: 223 26% 20%;
+
+  --muted: 215 14% 68%;
+  --muted-foreground: 215 20% 86%;
+
+  --border: 223 24% 22%;
+  --ring: var(--brand);
+}
+
+/* Utilitaires premium */
+.glass { background: hsl(var(--surface) / .7); backdrop-filter: blur(18px); border: 1px solid hsl(var(--border)); box-shadow: 0 10px 30px hsl(var(--shadow) / .12); border-radius: 1rem; }
+.gradient-border { position: relative; }
+.gradient-border::before { content:""; position:absolute; inset:-1px; border-radius: inherit; background: conic-gradient(from 180deg, hsl(var(--brand)) 0%, #22d3ee 25%, transparent 60%); filter: blur(6px); opacity:.25; z-index:-1; }
+.grain::after { content:""; position:fixed; inset:0; background-image: radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px); background-size: 3px 3px; opacity:.35; pointer-events:none; mix-blend-mode:multiply; }
+.ring-gradient { box-shadow: 0 0 0 2px hsl(var(--brand) / .25), 0 0 0 6px hsl(var(--brand) / .08); }
+:root {
+  --brand: 217 100% 52%;
+  --brand-foreground: 0 0% 100%;
+
+  --bg: 210 40% 98%;
+  --surface: 0 0% 100%;
+  --surface-2: 210 40% 98%;
+  --surface-3: 210 30% 96%;
+
+  --muted: 215 16% 47%;
+  --muted-foreground: 222 9% 45%;
+
+  --border: 214 32% 91%;
+  --ring: var(--brand);
+  --shadow: 215 20% 18%;
+}
+
+.dark {
+  --bg: 223 33% 10%;
+  --surface: 223 36% 13%;
+  --surface-2: 223 30% 16%;
+  --surface-3: 223 26% 20%;
+
+  --muted: 215 14% 68%;
+  --muted-foreground: 215 20% 86%;
+
+  --border: 223 24% 22%;
+  --ring: var(--brand);
+}
+
+

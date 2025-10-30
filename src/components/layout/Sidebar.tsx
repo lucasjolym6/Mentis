@@ -1,28 +1,45 @@
 // src/components/layout/Sidebar.tsx
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
+"use client"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
+import { Home, Settings, LogOut } from "lucide-react"
 
-const nav = [
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/personas/1', label: 'Persona' },
-  { href: '/settings', label: 'Settings' },
-]
+export function Sidebar() {
+  const pathname = usePathname()
+  const isActive = (href: string) => pathname?.startsWith(href)
 
-export function Sidebar({ className }: { className?: string }) {
+  const base = "flex items-center gap-3 px-3 py-2 rounded-xl transition hover:bg-gray-100"
+  const active = "bg-gray-100 text-gray-900"
+
   return (
-    <aside className={cn('w-56 border-r border-slate-200 dark:border-slate-800 p-3', className)}>
-      <div className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Navigation</div>
-      <nav className="grid gap-1">
-        {nav.map((n) => (
-          <Link
-            key={n.href}
-            href={n.href}
-            className="rounded-md px-2 py-2 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-          >
-            {n.label}
-          </Link>
-        ))}
+    <aside className="hidden md:flex h-full w-56 flex-col bg-white text-gray-800 p-4 border-r border-gray-200">
+      {/* Logo uniquement dans la Topbar pour éviter les doublons */}
+
+      <nav className="space-y-1">
+        <Link href="/dashboard" className={cn(base, isActive("/dashboard") && active)}>
+          <Home className="h-4 w-4" />
+          <span>Dashboard</span>
+        </Link>
+        <Link href="/settings" className={cn(base, isActive("/settings") && active)}>
+          <Settings className="h-4 w-4" />
+          <span>Settings</span>
+        </Link>
       </nav>
+
+      <div className="mt-auto pt-6 border-t border-gray-200">
+        <button
+          onClick={async () => {
+            const { supabaseClient } = await import("@/lib/supabase-browser")
+            await supabaseClient.auth.signOut()
+            window.location.href = "/login"
+          }}
+          className={base}
+        >
+          <LogOut className="h-4 w-4" />
+          <span>Logout</span>
+        </button>
+      </div>
     </aside>
   )
 }
